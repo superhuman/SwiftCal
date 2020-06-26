@@ -775,6 +775,7 @@ extension DateFormatter {
         static let dateOnly = "yyyyMMdd"
         static let dateOnlyWithZone = "yyyyMMddz"
     }
+
     // Returns date and isAllDay boolean
     func dateFromICSString(icsDate: String, calendarTimezone: TimeZone? = nil) -> (date: Date?, allDay: Bool) {
 
@@ -790,20 +791,26 @@ extension DateFormatter {
             self.dateFormat = ICSFormat.withZone
             date = self.date(from: formattedString)
         } else if let calendarTimezone = calendarTimezone {
-            timeZone = TimeZone(secondsFromGMT: 0)
+            timeZone = TimeZone(abbreviation: "GMT")
             date = self.date(from: formattedString)
-            date?.addTimeInterval(TimeInterval(calendarTimezone.secondsFromGMT()))
             if let givenDate = date {
-                date?.addTimeInterval(-TimeZone.current.daylightSavingTimeOffset(for: givenDate))
+                date?.addTimeInterval(-TimeInterval(calendarTimezone.secondsFromGMT(for: givenDate)))
+
+                // if calendarTimezone was created by offsetting secondsFromGMT with `TZOFFSETTO`, it won't be able to do daylight savings adjustment
+                // so we do the adjustment for daylight savings based on the receiver's timezone
+                if !calendarTimezone.isDaylightSavingTime(for: givenDate) {
+                // secondsFromGMT also accounts for daylight savings based on the timezone and date
+                    date?.addTimeInterval(-TimeZone.current.daylightSavingTimeOffset(for: givenDate))
+                }
             }
         }
-        
+
         if (date == nil) {
-            
+
             self.dateFormat = containsTimezone ? ICSFormat.dateOnlyWithZone : ICSFormat.dateOnly
-            
+
             date = self.date(from: formattedString)
-            
+
             return (date, true)
         } else {
             // Time in the date -> not all day
