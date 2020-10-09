@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A8BF3492530D61D00D42A07 /* ICSEventParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BF3482530D61D00D42A07 /* ICSEventParserTests.swift */; };
 		51873BD11FD2AA570000E9C5 /* university.ics in Resources */ = {isa = PBXBuildFile; fileRef = 51873BD01FD2AA570000E9C5 /* university.ics */; };
 		51873BD31FD2AAC50000E9C5 /* basic.ics in Resources */ = {isa = PBXBuildFile; fileRef = 51873BD21FD2AAC50000E9C5 /* basic.ics */; };
 		51873BD51FD2D6150000E9C5 /* university-formatted.ics in Resources */ = {isa = PBXBuildFile; fileRef = 51873BD41FD2D6150000E9C5 /* university-formatted.ics */; };
 		51873BEA1FD375D00000E9C5 /* SwiftCal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51873BE11FD375CF0000E9C5 /* SwiftCal.framework */; };
-		51873BF11FD375D00000E9C5 /* SwiftCalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51873BF01FD375D00000E9C5 /* SwiftCalTests.swift */; };
 		51873BF31FD375D00000E9C5 /* SwiftCal.h in Headers */ = {isa = PBXBuildFile; fileRef = 51873BE31FD375CF0000E9C5 /* SwiftCal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		51873BF61FD375D00000E9C5 /* SwiftCal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51873BE11FD375CF0000E9C5 /* SwiftCal.framework */; };
 		51873BF71FD375D00000E9C5 /* SwiftCal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 51873BE11FD375CF0000E9C5 /* SwiftCal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -83,6 +83,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A8BF3482530D61D00D42A07 /* ICSEventParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICSEventParserTests.swift; sourceTree = "<group>"; };
 		51873BD01FD2AA570000E9C5 /* university.ics */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = university.ics; sourceTree = "<group>"; usesTabs = 0; wrapsLines = 1; };
 		51873BD21FD2AAC50000E9C5 /* basic.ics */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = basic.ics; sourceTree = "<group>"; };
 		51873BD41FD2D6150000E9C5 /* university-formatted.ics */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "university-formatted.ics"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.applescript; };
@@ -90,7 +91,6 @@
 		51873BE31FD375CF0000E9C5 /* SwiftCal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftCal.h; sourceTree = "<group>"; };
 		51873BE41FD375CF0000E9C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51873BE91FD375D00000E9C5 /* SwiftCalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftCalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		51873BF01FD375D00000E9C5 /* SwiftCalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftCalTests.swift; sourceTree = "<group>"; };
 		51873BF21FD375D00000E9C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51A1D2FE1FCF4A5C00963B5F /* CalendarKit-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CalendarKit-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		51A1D3011FCF4A5C00963B5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -163,8 +163,8 @@
 		51873BEF1FD375D00000E9C5 /* SwiftCalTests */ = {
 			isa = PBXGroup;
 			children = (
-				51873BF01FD375D00000E9C5 /* SwiftCalTests.swift */,
 				51873BF21FD375D00000E9C5 /* Info.plist */,
+				0A8BF3482530D61D00D42A07 /* ICSEventParserTests.swift */,
 			);
 			path = SwiftCalTests;
 			sourceTree = "<group>";
@@ -361,7 +361,7 @@
 					};
 					51873BE81FD375D00000E9C5 = {
 						CreatedOnToolsVersion = 9.1;
-						LastSwiftMigration = 1140;
+						LastSwiftMigration = 1200;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 51A1D2FD1FCF4A5C00963B5F;
 					};
@@ -465,7 +465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51873BF11FD375D00000E9C5 /* SwiftCalTests.swift in Sources */,
+				0A8BF3492530D61D00D42A07 /* ICSEventParserTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,12 +601,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6UJ7Z72VQ8;
 				INFOPLIST_FILE = SwiftCalTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mauricearikoglu.SwiftCalTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalendarKit-Swift.app/CalendarKit-Swift";
@@ -617,6 +619,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6UJ7Z72VQ8;
 				INFOPLIST_FILE = SwiftCalTests/Info.plist;
