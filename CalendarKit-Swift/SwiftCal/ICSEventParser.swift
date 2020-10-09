@@ -21,6 +21,7 @@ class ICSEventParser: NSObject {
         static let organizer2 = "ORGANIZER:"
         static let sequence = "SEQUENCE:"
         static let location = "LOCATION:"
+        static let location2 = "LOCATION;"
         static let lastModified = "LAST-MODIFIED:"
         static let description = "DESCRIPTION:"
         static let description2 = "DESCRIPTION;"
@@ -230,11 +231,27 @@ class ICSEventParser: NSObject {
     private static func location(from icsString: String) -> String? {
         
         var locationString: NSString?
-        
+
+        // Handle `LOCATION;LANGUAGE=en-US:123 Penny Lane…` format
         let eventScanner = Scanner(string: icsString)
         eventScanner.charactersToBeSkipped = newlineCharacterSet()
-        eventScanner.scanUpTo(ICS.location, into: nil)
+        eventScanner.scanUpTo(ICS.location2, into: nil)
+        eventScanner.scanUpTo(":", into: nil)
+        eventScanner.scanString(":", into: nil)
         eventScanner.scanUpTo("\n", into: &locationString)
+        if locationString != nil {
+            locationString = locationString?.replacingOccurrences(of: ICS.location2, with: "").replacingOccurrences(of: "\\n", with: "\n").replacingOccurrences(of: "\\", with: "").trimmingCharacters(in: newlineCharacterSet()) as NSString?
+        }
+
+        // Handle `LOCATION:123 Penny Lane…` format
+        if locationString?.length ?? 0 == 0 {
+            eventScanner.scanLocation = 0
+            eventScanner.scanUpTo(ICS.location, into: nil)
+            eventScanner.scanUpTo("\n", into: &locationString)
+            if locationString != nil {
+                locationString = locationString?.replacingOccurrences(of: ICS.location, with: "").replacingOccurrences(of: "\\n", with: "\n").replacingOccurrences(of: "\\", with: "").trimmingCharacters(in: newlineCharacterSet()) as NSString?
+            }
+        }
 
         var isMultiLineDescription = true;
 
@@ -248,7 +265,7 @@ class ICSEventParser: NSObject {
             }
         }
 
-        return locationString?.replacingOccurrences(of: ICS.location, with: "").replacingOccurrences(of: "\\n", with: "\n").replacingOccurrences(of: "\\", with: "").trimmingCharacters(in: CharacterSet.newlines).fixIllegalICS()
+        return locationString?.replacingOccurrences(of: "\\n", with: "\n").replacingOccurrences(of: "\\", with: "").trimmingCharacters(in: CharacterSet.newlines).fixIllegalICS()
     }
     
     private static func lastModified(from icsString: String) -> String? {
@@ -266,11 +283,8 @@ class ICSEventParser: NSObject {
 
         var descriptionString: NSString?
 
-        var eventScanner = Scanner(string: icsString)
-        eventScanner.charactersToBeSkipped = newlineCharacterSet()
-
         // Handle `DESCRIPTION;LANGUAGE=en-US:Dear Gary, Attached is the ...` format
-        eventScanner = Scanner(string: icsString)
+        let eventScanner = Scanner(string: icsString)
         eventScanner.charactersToBeSkipped = newlineCharacterSet()
         eventScanner.scanUpTo(ICS.description2, into: nil)
         eventScanner.scanUpTo(":", into: nil)
