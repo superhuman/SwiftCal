@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0A8BF3492530D61D00D42A07 /* ICSEventParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BF3482530D61D00D42A07 /* ICSEventParserTests.swift */; };
+		1DDC9B242580B470008BE37C /* ICSTimeZoneParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC9B232580B470008BE37C /* ICSTimeZoneParser.swift */; };
+		1DDC9B252580B470008BE37C /* ICSTimeZoneParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC9B232580B470008BE37C /* ICSTimeZoneParser.swift */; };
+		1DDC9B2B2580B4FC008BE37C /* TimeZoneTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC9B2A2580B4FC008BE37C /* TimeZoneTime.swift */; };
+		1DDC9B2C2580B4FC008BE37C /* TimeZoneTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC9B2A2580B4FC008BE37C /* TimeZoneTime.swift */; };
 		51873BD11FD2AA570000E9C5 /* university.ics in Resources */ = {isa = PBXBuildFile; fileRef = 51873BD01FD2AA570000E9C5 /* university.ics */; };
 		51873BD31FD2AAC50000E9C5 /* basic.ics in Resources */ = {isa = PBXBuildFile; fileRef = 51873BD21FD2AAC50000E9C5 /* basic.ics */; };
 		51873BD51FD2D6150000E9C5 /* university-formatted.ics in Resources */ = {isa = PBXBuildFile; fileRef = 51873BD41FD2D6150000E9C5 /* university-formatted.ics */; };
@@ -84,6 +88,8 @@
 
 /* Begin PBXFileReference section */
 		0A8BF3482530D61D00D42A07 /* ICSEventParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICSEventParserTests.swift; sourceTree = "<group>"; };
+		1DDC9B232580B470008BE37C /* ICSTimeZoneParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICSTimeZoneParser.swift; sourceTree = "<group>"; };
+		1DDC9B2A2580B4FC008BE37C /* TimeZoneTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneTime.swift; sourceTree = "<group>"; };
 		51873BD01FD2AA570000E9C5 /* university.ics */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = university.ics; sourceTree = "<group>"; usesTabs = 0; wrapsLines = 1; };
 		51873BD21FD2AAC50000E9C5 /* basic.ics */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = basic.ics; sourceTree = "<group>"; };
 		51873BD41FD2D6150000E9C5 /* university-formatted.ics */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "university-formatted.ics"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.applescript; };
@@ -234,6 +240,8 @@
 				51A1D3401FD057DB00963B5F /* SwiftCal.swift */,
 				51A1D33B1FCF4F4600963B5F /* CalendarEvent.swift */,
 				51A1D33E1FCF572800963B5F /* ICSEventParser.swift */,
+				1DDC9B232580B470008BE37C /* ICSTimeZoneParser.swift */,
+				1DDC9B2A2580B4FC008BE37C /* TimeZoneTime.swift */,
 			);
 			path = SwiftCal;
 			sourceTree = "<group>";
@@ -456,7 +464,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				51873C001FD3767E0000E9C5 /* CalendarEvent.swift in Sources */,
+				1DDC9B252580B470008BE37C /* ICSTimeZoneParser.swift in Sources */,
 				51873C011FD376D60000E9C5 /* ICSEventParser.swift in Sources */,
+				1DDC9B2C2580B4FC008BE37C /* TimeZoneTime.swift in Sources */,
 				51873BFF1FD3767B0000E9C5 /* SwiftCal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,7 +487,9 @@
 				51A1D33C1FCF4F4600963B5F /* CalendarEvent.swift in Sources */,
 				51A1D33F1FCF572800963B5F /* ICSEventParser.swift in Sources */,
 				51A1D3411FD057DB00963B5F /* SwiftCal.swift in Sources */,
+				1DDC9B2B2580B4FC008BE37C /* TimeZoneTime.swift in Sources */,
 				51A1D3021FCF4A5C00963B5F /* AppDelegate.swift in Sources */,
+				1DDC9B242580B470008BE37C /* ICSTimeZoneParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
