@@ -45,9 +45,12 @@ class ICSEventParser: NSObject {
         let startDateInfo = startDate(from: icsString, calendarTimezone: calendarTimezone)
         let endDateInfo = endDate(from: icsString, calendarTimezone: calendarTimezone)
 
-        guard let startDate = startDateInfo.date, let endDate = endDateInfo.date else {
+        guard let startDate = startDateInfo.date else {
             return nil
         }
+        
+        // https://tools.ietf.org/html/rfc5545 specifies that for VEVENTs missing a DTEND, the event ends at the same date and time as the start.
+        let endDate = endDateInfo.date ?? startDate
 
         guard let uniqueId = uniqueIdentifier(from: icsString) else {
             return nil

@@ -33,5 +33,18 @@ class SwiftCalTests: XCTestCase {
         let icsLocationWithParametersEvent = ICSEventParser.event(from: icsLocationWithParameters)
         XCTAssertEqual(icsLocationWithParametersEvent?.location, location)
     }
-
+    
+    func testNoEndDate() {
+        let icsEventWithoutEnd = """
+        UID:E87642FC-0526-4FF2-88B2-4DDAE14C6A76\r
+        DTSTART;TZID=Pacific Standard Time:20201008T110000\r
+        END:VEVENT\r
+        END:VCALENDAR\r
+        """
+        
+        let parsedEvent = ICSEventParser.event(from: icsEventWithoutEnd)
+        
+        XCTAssertNotNil(parsedEvent?.endDate)
+        XCTAssertEqual(parsedEvent?.startDate, parsedEvent?.endDate)
+    }
 }
